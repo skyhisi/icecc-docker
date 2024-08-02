@@ -14,9 +14,6 @@ jobs:
 
     permissions:
       contents: read
-      packages: write
-      attestations: write
-      id-token: write
 
     steps:
       - uses: actions/checkout@v4
@@ -38,6 +35,9 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.IMAGE_NAME }}
+          tags: |
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=sha
 
       - name: Build and push Docker image
         id: push
