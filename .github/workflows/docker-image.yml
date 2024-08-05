@@ -57,8 +57,8 @@ jobs:
         with:
           context: .
           push: true
-          build-args:
-            - "base_tag=${{ env.BASE_TAG }}"
+          build-args: |
+            base_tag=${{ env.BASE_TAG }}
           platforms: linux/amd64,linux/arm64,linux/arm/v7
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
